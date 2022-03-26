@@ -1,13 +1,23 @@
 import React from "react";
-import type { IHighlight } from "./react-pdf-highlighter";
+import type { IHHighlight } from "./react-pdf-highlighter";
+import TreeView from '@mui/lab/TreeView';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import TreeItem from '@mui/lab/TreeItem';
 
+import { IWorkspace } from "./types/Workspace";
+import { Divider } from "@mui/material";
+import { IResource } from "./types/Resource";
 interface Props {
-  highlights: Array<IHighlight>;
+  highlights: Array<IHHighlight>;
   resetHighlights: () => void;
   toggleDocument: () => void;
+  page: "pdf" | "dashboard" | "editor";
+  workspaces: IWorkspace[];
+  changeResource: (res: IResource) => Promise<void>;
 }
 
-const updateHash = (highlight: IHighlight) => {
+const updateHash = (highlight: IHHighlight) => {
   document.location.hash = `highlight-${highlight.id}`;
 };
 
@@ -15,18 +25,38 @@ export function Sidebar({
   highlights,
   toggleDocument,
   resetHighlights,
+  workspaces,
+  page,
+  changeResource,
 }: Props) {
   return (
-    <div className="sidebar" style={{ width: "25vw" }}>
+    <div className="sidebar" style={{}}>
       <div className="description" style={{ padding: "1rem" }}>
-        <h2 style={{ marginBottom: "1rem" }}>react-pdf-highlighter</h2>
+        <h2 style={{ marginBottom: "1rem" }}>Workspaces</h2>
+        <TreeView
+          aria-label="file system navigator"
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+          sx={{ overflowY: 'auto' }}
+        >
+          {
+            workspaces.map(w =>
+              <>
+                <TreeItem nodeId={w.id} label={w.name}>
+                  {
+                    w.resources.map(r => (
+                      <TreeItem nodeId={r.id} label={r.name} onClick={() => changeResource(r)} />
+                    ))
+                  }
 
-        <p style={{ fontSize: "0.7rem" }}>
-          <a href="https://github.com/agentcooper/react-pdf-highlighter">
-            Open in GitHub
-          </a>
-        </p>
+                </TreeItem>
+              </>
+            )
+          }
+        </TreeView>
 
+
+        <Divider style={{ marginTop: '1em' }} />
         <p>
           <small>
             To create area highlight hold ⌥ Option key (Alt), then click and

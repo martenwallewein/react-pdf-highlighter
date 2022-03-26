@@ -57,7 +57,7 @@ export interface NewHighlight extends HighlightContent, HighlightComment {
   position: ScaledPosition;
 }
 
-export interface IHighlight extends NewHighlight {
+export interface IHHighlight extends NewHighlight {
   id: string;
 }
 
