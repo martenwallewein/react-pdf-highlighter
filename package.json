@@ -34,13 +34,22 @@
     "react-dom": ">=16.4.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/lab": "^5.0.0-alpha.74",
+    "@mui/material": "^5.5.2",
+    "@mui/x-data-grid": "^5.7.0",
     "@types/lodash.debounce": "^4.0.6",
     "@types/pdfjs-dist": "^2.7.4",
     "@types/react": "^16.4.0",
     "@types/react-dom": "^16.4.0",
+    "easymde": "^2.16.1",
     "lodash.debounce": "^4.0.8",
+    "mui-markdown": "^0.5.3",
     "pdfjs-dist": "2.11.338",
-    "react-rnd": "^10.1.10"
+    "react-rnd": "^10.1.10",
+    "react-router-dom": "^6.2.2"
   },
   "repository": {
     "type": "git",

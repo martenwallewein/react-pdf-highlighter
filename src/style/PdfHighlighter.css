@@ -1,8 +1,9 @@
 .PdfHighlighter {
   position: absolute;
-  overflow: auto;
-  width: 100%;
+  overflow: auto; 
+  width: calc(100% - 240px);
   height: 100%;
+  padding-top: 64px;
 }
 
 .PdfHighlighter__highlight-layer {

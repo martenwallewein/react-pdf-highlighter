@@ -1,0 +1,7 @@
+.Editor {
+    position: absolute;
+    overflow: auto; 
+    width: calc(100% - 240px);
+    height: 100%;
+    padding-top: 64px;
+  }
